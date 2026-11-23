@@ -1,0 +1,9 @@
+{
+  "format": 1,
+  "fixture": "expert_dispatch",
+  "synthetic": true,
+  "records": [
+    "primary.json",
+    "revision.json"
+  ]
+}

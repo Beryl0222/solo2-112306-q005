@@ -1,0 +1,45 @@
+{
+  "policy": "fixture-policy-12",
+  "experts": [
+    {
+      "id": "vision",
+      "capacity": 2
+    },
+    {
+      "id": "force",
+      "capacity": 2
+    }
+  ],
+  "source_quotas": {
+    "vision_sensor": 2,
+    "force_sensor": 2,
+    "motion_hint": 1
+  },
+  "microbatches": [
+    {
+      "source": "vision_sensor",
+      "sequence": 1,
+      "vectors": [
+        [
+          0.2,
+          0.7
+        ],
+        [
+          0.8,
+          0.1
+        ]
+      ]
+    },
+    {
+      "source": "force_sensor",
+      "sequence": 1,
+      "vectors": [
+        [
+          0.5,
+          0.4
+        ]
+      ]
+    }
+  ],
+  "gate_seed": 23
+}
