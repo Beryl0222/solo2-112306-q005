@@ -3,43 +3,126 @@
   "experts": [
     {
       "id": "vision",
-      "capacity": 2
+      "capacity": {
+        "tight": 3,
+        "wide": 6
+      }
     },
     {
       "id": "force",
-      "capacity": 2
+      "capacity": {
+        "tight": 3,
+        "wide": 6
+      }
     }
   ],
-  "source_quotas": {
-    "vision_sensor": 2,
-    "force_sensor": 2,
-    "motion_hint": 1
-  },
   "microbatches": [
     {
       "source": "vision_sensor",
       "sequence": 1,
-      "vectors": [
-        [
-          0.2,
-          0.7
-        ],
-        [
-          0.8,
-          0.1
-        ]
+      "rows": [
+        {
+          "id": "vision_sensor-0",
+          "vector": [
+            0.2,
+            0.7
+          ],
+          "priority": 0,
+          "scores": {
+            "vision": 0.3,
+            "force": 0.4
+          }
+        },
+        {
+          "id": "vision_sensor-1",
+          "vector": [
+            0.8,
+            0.1
+          ],
+          "priority": 0,
+          "scores": {
+            "vision": 0.6699999999999999,
+            "force": 0.55
+          }
+        }
       ]
     },
     {
       "source": "force_sensor",
       "sequence": 1,
-      "vectors": [
-        [
-          0.5,
-          0.4
-        ]
+      "rows": [
+        {
+          "id": "force_sensor-0",
+          "vector": [
+            0.5,
+            0.4
+          ],
+          "priority": 0,
+          "scores": {
+            "vision": 0.3,
+            "force": 0.4
+          }
+        }
       ]
     }
   ],
-  "gate_seed": 23
+  "capture": "capture-5-a",
+  "quotas": {
+    "tight": {
+      "vision": {
+        "vision_sensor": 1,
+        "force_sensor": 0,
+        "motion_hint": 1,
+        "shared": 1
+      },
+      "force": {
+        "vision_sensor": 0,
+        "force_sensor": 1,
+        "motion_hint": 1,
+        "shared": 1
+      }
+    },
+    "wide": {
+      "vision": {
+        "vision_sensor": 2,
+        "force_sensor": 1,
+        "motion_hint": 1,
+        "shared": 2
+      },
+      "force": {
+        "vision_sensor": 1,
+        "force_sensor": 2,
+        "motion_hint": 1,
+        "shared": 2
+      }
+    }
+  },
+  "source_span": {
+    "vision_sensor": [
+      1,
+      2
+    ],
+    "force_sensor": [
+      1,
+      1
+    ],
+    "motion_hint": [
+      1,
+      1
+    ]
+  },
+  "priority_caps": {
+    "vision_sensor": {
+      "priority": 0,
+      "score": 0.95
+    },
+    "force_sensor": {
+      "priority": 0,
+      "score": 0.72
+    },
+    "motion_hint": {
+      "priority": 1,
+      "score": 1.0
+    }
+  }
 }

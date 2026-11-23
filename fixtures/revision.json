@@ -1,47 +1,78 @@
 {
-  "policy": "fixture-policy-12",
-  "experts": [
+  "capture": "capture-5-b",
+  "arrivals": [
     {
-      "id": "vision",
-      "capacity": 2
+      "source": "motion_hint",
+      "sequence": 1,
+      "rows": [
+        {
+          "id": "motion_hint-0",
+          "vector": [
+            0.3,
+            0.7
+          ],
+          "priority": 1,
+          "scores": {
+            "vision": 0.98,
+            "force": 0.77
+          }
+        }
+      ],
+      "seal": true
     },
-    {
-      "id": "force",
-      "capacity": 2
-    }
-  ],
-  "source_quotas": {
-    "vision_sensor": 2,
-    "force_sensor": 2,
-    "motion_hint": 1
-  },
-  "microbatches": [
     {
       "source": "vision_sensor",
-      "sequence": 1,
-      "vectors": [
-        [
-          0.2,
-          0.7
-        ],
-        [
-          0.8,
+      "sequence": 2,
+      "rows": [
+        {
+          "id": "vision_sensor-late",
+          "vector": [
+            0.1,
+            0.5
+          ],
+          "priority": 0,
+          "scores": {
+            "vision": 0.91,
+            "force": 0.2
+          }
+        }
+      ],
+      "seal": true
+    }
+  ],
+  "seal_without_data": [
+    "force_sensor"
+  ],
+  "reply_scenarios": [
+    {
+      "expert": "force",
+      "rows_by_vector": {
+        "motion_hint-0": [
+          0.9,
           0.1
+        ],
+        "force_sensor-0": [
+          0.2,
+          0.3
         ]
-      ]
+      }
     },
     {
-      "source": "force_sensor",
-      "sequence": 1,
-      "vectors": [
-        [
-          0.5,
+      "expert": "vision",
+      "rows_by_vector": {
+        "vision_sensor-late": [
+          0.2,
           0.4
+        ],
+        "motion_hint-0": [
+          0.4,
+          0.5
         ]
+      },
+      "after_deadline": [
+        "motion_hint-0"
       ]
     }
   ],
-  "gate_seed": 23,
-  "revision": "synthetic-revision-2",
-  "note": "用于说明资料发生修订，不包含预设的业务计算结论。"
+  "replaces": "capture-5-a"
 }
